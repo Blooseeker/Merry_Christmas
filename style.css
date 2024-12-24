@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" sans-serif;
+}
+:root {
+  --clr: rgb(81, 122, 227);
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Chiều rộng phủ toàn bộ màn hình */
+  height: 100%; /* Chiều cao phủ toàn bộ màn hình */
+  object-fit: cover; /* Duy trì tỷ lệ hình ảnh, cắt phần thừa nếu cần */
+  z-index: -1; /* Đặt hình nền phía sau nội dung */
+}
+.container .cloud {
+  position: relative;
+  width: 300px;
+  z-index: 100;
+  filter: drop-shadow(0 0 35px var(--clr));
+}
+.container .cloud h2 {
+  position: absolute;
+  color: var(--clr);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: white;
+  font-size: 2em;
+  z-index: 1000;
+  font-weight: 400;
+  padding: 0 10px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  background: var(--clr);
+}
+.container .cloud h2::before {
+  content: "";
+  position: absolute;
+  top: -115px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100px;
+  width: 120%;
+  height: 100px;
+  background: var(--clr);
+}
+.container .cloud h2::after {
+  content: "";
+  position: absolute;
+  top: -150px;
+  left: 25px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--clr);
+  box-shadow: 120px -30px 0 40px var(--clr);
+}
+.container .cloud .drop {
+  position: absolute;
+  top: 60px;
+  height: 20px;
+  line-height: 20px;
+  color: var(--clr);
+  transform-origin: bottom;
+  animation: animate 2s linear infinite;
+  text-shadow: 0 0 10px #ffffff,
+    /* Ánh sáng trắng xung quanh */ 0 0 20px #87ceeb,
+    /* Ánh sáng xanh nhạt (để tạo hiệu ứng tuyết lấp lánh) */ 0 0 30px #add8e6,
+    /* Ánh sáng xanh nhẹ */ 0 0 40px #add8e6;
+}
+@keyframes animate {
+  0% {
+    transform: translateY(0) scaleY(0);
+    transform-origin: top;
+  }
+  10% {
+    transform: translateY(0) scaleY(1);
+    transform-origin: top;
+  }
+  20% {
+    transform: translateY(0) scaleY(1);
+  }
+  70% {
+    transform: translateY(700px) scaleY(1);
+    transform-origin: bottom;
+  }
+  80% {
+    transform: translateY(700px) scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: translateY(700px) scaleY(0);
+    transform-origin: bottom;
+    text-shadow: -180px 0 0 var(--clr), 180px 0 0 var(--clr);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container .cloud {
+    width: 200px; /* Giảm kích thước của mây */
+  }
+
+  .container .cloud h2 {
+    font-size: 1.5em; /* Giảm kích thước chữ */
+  }
+
+  .container .cloud .drop {
+    height: 15px; /* Giảm kích thước giọt tuyết */
+    width: 8px;
+  }
+
+  body {
+    padding: 10px; /* Thêm padding để không có khoảng trống thừa */
+  }
+}
+
+/* Tablet Devices */
+@media only screen and (max-width: 768px) {
+  .container .cloud {
+    width: 250px; /* Kích thước mây lớn hơn một chút so với mobile */
+  }
+
+  .container .cloud h2 {
+    font-size: 1.8em; /* Giảm kích thước chữ */
+  }
+
+  .container .cloud .drop {
+    height: 18px; /* Kích thước giọt tuyết vừa phải */
+    width: 9px;
+  }
+}
+
+/* Laptop Devices */
+@media only screen and (max-width: 1024px) {
+  .container .cloud {
+    width: 280px; /* Kích thước mây lớn hơn */
+  }
+
+  .container .cloud h2 {
+    font-size: 2em; /* Kích thước chữ tương tự như trên desktop */
+  }
+
+  .container .cloud .drop {
+    height: 20px; /* Kích thước giọt tuyết bình thường */
+    width: 10px;
+  }
+}
