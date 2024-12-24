@@ -42,9 +42,11 @@ body {
 .container .cloud h2 {
   position: absolute;
   color: var(--clr);
+  width: 350px;
+  text-align: center;
   left: 50%;
   transform: translateX(-50%);
-  white-space: nowrap;
+  white-space: wrap;
   color: white;
   font-size: 2em;
   z-index: 1000;
